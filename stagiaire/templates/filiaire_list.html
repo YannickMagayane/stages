@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}<br/>
+ <div class="row row-cols-1 row-cols-md-3 g-4" style="margin-right: 2px; margin-left: 3px;">
+    {% for filiaire in object_list %}
+   <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ filiaire.filiaire }}</h5>
+          {% if filiaire.bureau %}
+        <p class="card-text">{{ filiaire.bureau }}</p>
+          {% else %}
+          aucune description
+          {% endif %}
+      <a href="{% url 'program_list' filiaire.pk %}" class="btn btn-primary">Voir Programme</a>
+    </div>
+    </div>
+  </div>
+        {% empty %}
+      Aucune filière trouvée.
+    {% endfor %}
+
+ </div>
+{% else %}
+<br/>
+<h5 style="text-align:center;">Vous devez vous connecter <a href="{% url 'login' %}" class="btn btn-primary" >Connecter vous</a> Pour vous enreigistrer veillez contacter le pool informatique</h5>
+
+{% endif %}
+{% endblock %}

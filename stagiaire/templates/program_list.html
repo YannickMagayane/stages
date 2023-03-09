@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h3 style="text-align:center;color:red;">Programme pour la filière {{ option }}</h3>
+  <ul class="list-group" style="margin: 5%">
+    {% for program in object_list %}
+      <a class="list-group-item" >{{ program.programme }}  {{ program.date }}</a>
+    {% empty %}
+      <li>Aucun programme trouvé.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

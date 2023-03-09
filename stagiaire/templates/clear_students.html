@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %} Supprimer la liste {% endblock %}
+{% block content %}
+  <h3>Supprimer tous les stagiaires</h3>
+  <p>Êtes-vous sûr de vouloir supprimer tous les stagiaires ? Cette action est irréversible.</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Supprimer</button>
+  </form>
+{% endblock %}

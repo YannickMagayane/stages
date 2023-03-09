@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Liste des filières</h1>
+  <ul>
+    {% for filiaire in object_list %}
+      <li><a href="{% url 'program_list' filiaire.pk %}">{{ filiaire }}</a></li>
+    {% empty %}
+      <li>Aucune filière trouvée.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

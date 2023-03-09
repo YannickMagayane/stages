@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %} Connexion  {% endblock %}
+
+
+{% block content %}
+<form  method="POST" style="text-align=center; ">
+  {% csrf_token %}
+  <br/>
+
+  <div class="mb-3" style="padding-right: 500px; padding-left: 500px;">
+    <input type="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username" name="username">
+  </div>
+  <div class="mb-3" style="padding-right: 500px; padding-left: 500px;">
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Mot de passe" name="password">
+  </div>
+<div style="padding-right: 500px; padding-left: 500px;">
+  <input type="submit" class="btn btn-primary" style="text-align=center;" value="Connecter">
+<br/>
+</div>
+</form>
+
+{% endblock %}

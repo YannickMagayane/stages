@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %} Enreigistrement {% endblock %}
+
+{% block content %}
+<br/>
+<h3 style="text-align:center;color:red;">Enreigistrement</h3>
+<div class='form-group' style="margin: 2%">
+<form method="POST" enctype="multipart/form-data">
+
+  {% csrf_token %}
+
+  {{ form1.as_p }}
+  {{ form.media }}
+  {{ form2.as_p }}
+
+  <button type="submit" class="btn btn-primary"> Enreigistrer </button>
+
+    </form>
+  <div class='form-group'>
+
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h4>Liste des stagiaires <a href="{% url 'clear_students' %}" class = "btn btn-danger">Supprimer tous les étudiants</a></h4>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Post-nom</th>
+        <th>Prénom</th>
+        <th>Filière</th>
+        <th>Promotion</th>
+        <th>Date de fin de stage</th>
+        <th>Carte d'étudiant</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for student in students %}
+        <tr>
+          <td>{{ student.user.username}}</td>
+          <td>{{ student.user.first_name }}</td>
+          <td>{{ student.user.last_name }}</td>
+          <td>{{ student.option.filiaire }}</td>
+          <td>{{ student.promotion }}</td>
+          <td>{{ student.end_stage }}</td>
+          <td><a href="{% url 'generate_card' pk=student.pk %}" target="_blank" class="btn btn-outline-success"> Voir la carte </a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% if is_paginated %}
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-center">
+
+                {% if page_obj.has_previous %}
+                <li class="page-item"><a href="{% url 'student_list' %}?page={{ page_obj.previous_page_number }}" class="page-link">Précedent</a></li>
+                <li class="page-item"><a href="{% url 'student_list' %}?page={{ page_obj.previous_page_number }}" class="page-link">{{ page_obj.previous_page_number }}</a></li>
+                {% endif %}
+                <li class="page-item"><a href="#" class="page-link"  style="background: whitesmoke; color: black;">{{ page_obj.number }}</a></li>
+                {% if page_obj.has_next %}
+                <li class="page-item"><a href="{% url 'student_list' %}?page={{ page_obj.next_page_number }}" class="page-link">{{ page_obj.next_page_number }}</a></li>
+                <li class="page-item"><a href="{% url 'student_list' %}?page={{ page_obj.next_page_number }}" class="page-link">Suivant</a></li>
+                {% endif %}
+              </ul>
+              </nav>
+
+            {% endif %}
+{% endblock %}
