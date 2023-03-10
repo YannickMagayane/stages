@@ -21,13 +21,16 @@
         </li>
         {% if user.is_superuser %}
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'filiaire' %}">Ajouter Filiaire</a>
+          <a class="nav-link" href="{% url 'filiaire' %}" style="color: #199AAB;">Ajouter Filiaire</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'programme' %}">Ajouter Programme</a>
+          <a class="nav-link" href="http://127.0.0.1:8000/admin/" style="color:red;">Acceder à la base de donnée</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'student_list' %}">Liste Etudiant</a>
+          <a class="nav-link" href="{% url 'programme' %}" style="color:green;">Ajouter Programme</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'student_list' %}" style="color:#012b12;">Liste Etudiant</a>
         </li>
 
         <li class="nav-item">
