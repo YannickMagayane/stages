@@ -2,12 +2,14 @@ import qrcode
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, get_object_or_404,redirect
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView, CreateView
 from django.urls import reverse_lazy
 from .models import Filiaire, Program, Student
+from django.contrib import messages
 from .forms import StudentForm, UserForm, FiliaireForm
 
 
@@ -139,7 +141,8 @@ def user_login(request):
 
 def clear_students(request):
     if request.method == 'POST':
-        Student.objects.all().delete()
+        User.objects.exclude(is_superuser=True).delete()
+        messages.success(request, 'Tous les utilisateurs ont été supprimés, sauf le superutilisateur.')
         return redirect('student_list')
     return render(request, 'clear_students.html')
 
